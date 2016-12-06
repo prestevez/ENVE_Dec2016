@@ -103,9 +103,9 @@ bribecols <- c("bribe1",
                "bribe3",
                "bribe4")
 
-bribe_col_test <- bribecols %in% names(enve_test)
+#bribe_col_test <- bribecols %in% names(enve_test)
 
-colindbribe <- which(bribe_col_test==TRUE)
+colindbribe <- which(names(enve_test)==bribecols)
 
 colindbribe
 
