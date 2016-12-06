@@ -28,7 +28,7 @@ date()
 ```
 
 ```
-[1] "Tue Dec  6 21:38:11 2016"
+[1] "Tue Dec  6 21:43:06 2016"
 ```
 
 ```r
@@ -1364,7 +1364,7 @@ time
 
 ```
    user  system elapsed 
-  0.262   0.044   2.279 
+587.597   8.767 825.364 
 ```
 
 ```r
@@ -1373,5 +1373,5 @@ print(paste("the script took", round(time[3]/60,2),
 ```
 
 ```
-[1] "the script took 0.04 minutes to run."
+[1] "the script took 13.76 minutes to run."
 ```
