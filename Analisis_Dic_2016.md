@@ -28,7 +28,7 @@ date()
 ```
 
 ```
-[1] "Tue Dec  6 21:34:39 2016"
+[1] "Tue Dec  6 21:38:11 2016"
 ```
 
 ```r
@@ -220,46 +220,22 @@ summary(enve_test$bribes)
 bribecols <- c("bribe1",
                "bribe2",
                "bribe3",
-               "bribe4",)
-```
+               "bribe4")
 
-```
-Error in c("bribe1", "bribe2", "bribe3", "bribe4", ): argument 5 is empty
-```
-
-```r
 bribe_col_test <- bribecols %in% names(enve_test)
-```
 
-```
-Error in match(x, table, nomatch = 0L): object 'bribecols' not found
-```
-
-```r
 colindbribe <- which(bribe_col_test==TRUE)
-```
 
-```
-Error in which(bribe_col_test == TRUE): object 'bribe_col_test' not found
-```
-
-```r
 colindbribe
 ```
 
 ```
-Error in eval(expr, envir, enclos): object 'colindbribe' not found
+[1] 1 2 3 4
 ```
 
 ```r
 enve_test <- enve_test[,-colindbribe]
-```
 
-```
-Error in `[.data.frame`(enve_test, , -colindbribe): object 'colindbribe' not found
-```
-
-```r
 enve_test$CVE_ENT <- as.integer(as.character(enve_all$CVE_ENT))
 
 enve_test$size <- enve_all$ID_ESTRATO
@@ -301,7 +277,12 @@ length(enve_test$extortions[is.na(enve_test$extortions)])
 ```
 
 ```
-[1] 50
+Warning in is.na(enve_test$extortions): is.na() applied to non-(list or
+vector) of type 'NULL'
+```
+
+```
+[1] 0
 ```
 
 ```r
@@ -1383,7 +1364,7 @@ time
 
 ```
    user  system elapsed 
-  0.261   0.047   2.528 
+  0.262   0.044   2.279 
 ```
 
 ```r
