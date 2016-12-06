@@ -28,7 +28,7 @@ date()
 ```
 
 ```
-[1] "Tue Dec  6 20:42:06 2016"
+[1] "Tue Dec  6 21:18:48 2016"
 ```
 
 ```r
@@ -217,39 +217,30 @@ summary(enve_test$bribes)
 ```
 
 ```r
-enve_test$bribe_victim <- factor(enve_test$bribes)
-levels(enve_test$bribe_victim) <- c(0,
-                                    rep(1, length(levels(enve_test$bribe_victim)) - 1))
-summary(enve_test$bribe_victim)
+colindbribe <- which(names(enve_test)=="bribe1" |
+                                       "bribe2" |
+                                       "bribe3" |
+                                       "bribe4")
 ```
 
 ```
-   0    1 NA's 
-2168  282   50 
-```
-
-```r
-enve_test$rep_bribe <- factor(enve_test$bribes)
-levels(enve_test$rep_bribe) <- c(0, 0, rep(1,
-                                           length(levels(enve_test$rep_bribe)) - 2))
-summary(enve_test$rep_bribe)
-```
-
-```
-   0    1 NA's 
-2303  147   50 
+Error in names(enve_test) == "bribe1" | "bribe2": operations are possible only for numeric, logical or complex types
 ```
 
 ```r
-enve_test$bribe_cats <- factor(enve_test$bribes)
-levels(enve_test$bribe_cats) <- c(0, 1, 2, rep("3+",
-                                            length(levels(enve_test$bribe_cats)) - 3))
-summary(enve_test$bribe_cats)
+colindbribe
 ```
 
 ```
-   0    1    2   3+ NA's 
-2168  135   54   93   50 
+Error in eval(expr, envir, enclos): object 'colindbribe' not found
+```
+
+```r
+enve_test <- enve_test[,-colindbribe]
+```
+
+```
+Error in `[.data.frame`(enve_test, , -colindbribe): object 'colindbribe' not found
 ```
 
 ```r
@@ -506,7 +497,7 @@ sample estimates:
 ```r
 # For raw years number
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
+                        geom_point() +
                         geom_smooth(method="lm") +
                         xlab("Years") +
                         ylab("Extortions") +
@@ -525,7 +516,7 @@ Warning: Removed 50 rows containing missing values (geom_point).
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
+                        geom_point() +
                         geom_smooth(method="lm") +
                         xlab("Years (sqrt scale)") +
                         ylab("Extortions") +
@@ -535,19 +526,15 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 ```
 Warning: Removed 50 rows containing non-finite values (stat_smooth).
+
+Warning: Removed 50 rows containing missing values (geom_point).
 ```
 
-```
-Warning in trans$transform(out$range): NaNs produced
-```
-
-```
-Error in if (zero_range(range)) {: missing value where TRUE/FALSE needed
-```
+![plot of chunk years](figure/years-2.png)
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
+                        geom_point() +
                         geom_smooth(method="lm") +
                         xlab("Years (log scale)") +
                         ylab("Extortions") +
@@ -557,33 +544,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 ```
 Warning: Removed 50 rows containing non-finite values (stat_smooth).
-```
 
-```
-Warning: Removed 50 rows containing missing values (geom_point).
-```
-
-![plot of chunk years](figure/years-2.png)
-
-```r
-ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
-                        xlab("Years") +
-                        ylab("Extortions") +
-                        theme_bw() +
-                        geom_density_2d()
-```
-
-```
-Warning: Removed 50 rows containing non-finite values (stat_density2d).
-```
-
-```
-Warning: Computation failed in `stat_density2d()`:
-bandwidths must be strictly positive
-```
-
-```
 Warning: Removed 50 rows containing missing values (geom_point).
 ```
 
@@ -591,38 +552,10 @@ Warning: Removed 50 rows containing missing values (geom_point).
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
-                        xlab("Years (sqrt scale)") +
+                        geom_point() +
+                        xlab("Years") +
                         ylab("Extortions") +
                         theme_bw() +
-                        coord_trans(x="sqrt") +
-                        geom_density_2d()
-```
-
-```
-Warning: Removed 50 rows containing non-finite values (stat_density2d).
-```
-
-```
-Warning: Computation failed in `stat_density2d()`:
-bandwidths must be strictly positive
-```
-
-```
-Warning in trans$transform(out$range): NaNs produced
-```
-
-```
-Error in if (zero_range(range)) {: missing value where TRUE/FALSE needed
-```
-
-```r
-ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
-                        xlab("Years (log scale)") +
-                        ylab("Extortions") +
-                        theme_bw() +
-                        coord_trans(x="log1p") +
                         geom_density_2d()
 ```
 
@@ -643,16 +576,24 @@ Warning: Removed 50 rows containing missing values (geom_point).
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
-                        geom_smooth() +
-                        xlab("Years") +
+                        geom_point() +
+                        xlab("Years (sqrt scale)") +
                         ylab("Extortions") +
-                        theme_bw()
+                        theme_bw() +
+                        coord_trans(x="sqrt") +
+                        geom_density_2d()
 ```
 
 ```
-Warning: Removed 50 rows containing non-finite values (stat_smooth).
+Warning: Removed 50 rows containing non-finite values (stat_density2d).
+```
 
+```
+Warning: Computation failed in `stat_density2d()`:
+bandwidths must be strictly positive
+```
+
+```
 Warning: Removed 50 rows containing missing values (geom_point).
 ```
 
@@ -660,38 +601,21 @@ Warning: Removed 50 rows containing missing values (geom_point).
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
-                        geom_smooth() +
-                        xlab("Years (sqrt scale)") +
-                        ylab("Extortions") +
-                        theme_bw() +
-                        coord_trans(x="sqrt")
-```
-
-```
-Warning: Removed 50 rows containing non-finite values (stat_smooth).
-```
-
-```
-Warning in trans$transform(out$range): NaNs produced
-```
-
-```
-Error in if (zero_range(range)) {: missing value where TRUE/FALSE needed
-```
-
-```r
-ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
-                        geom_smooth() +
+                        geom_point() +
                         xlab("Years (log scale)") +
                         ylab("Extortions") +
                         theme_bw() +
-                        coord_trans(x="log1p")
+                        coord_trans(x="log1p") +
+                        geom_density_2d()
 ```
 
 ```
-Warning: Removed 50 rows containing non-finite values (stat_smooth).
+Warning: Removed 50 rows containing non-finite values (stat_density2d).
+```
+
+```
+Warning: Computation failed in `stat_density2d()`:
+bandwidths must be strictly positive
 ```
 
 ```
@@ -702,8 +626,8 @@ Warning: Removed 50 rows containing missing values (geom_point).
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
-                        geom_smooth(method="loess") +
+                        geom_point() +
+                        geom_smooth() +
                         xlab("Years") +
                         ylab("Extortions") +
                         theme_bw()
@@ -719,7 +643,60 @@ Warning: Removed 50 rows containing missing values (geom_point).
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
+                        geom_point() +
+                        geom_smooth() +
+                        xlab("Years (sqrt scale)") +
+                        ylab("Extortions") +
+                        theme_bw() +
+                        coord_trans(x="sqrt")
+```
+
+```
+Warning: Removed 50 rows containing non-finite values (stat_smooth).
+
+Warning: Removed 50 rows containing missing values (geom_point).
+```
+
+![plot of chunk years](figure/years-8.png)
+
+```r
+ggplot(enve_test, aes(x=years, y=extortions)) +
+                        geom_point() +
+                        geom_smooth() +
+                        xlab("Years (log scale)") +
+                        ylab("Extortions") +
+                        theme_bw() +
+                        coord_trans(x="log1p")
+```
+
+```
+Warning: Removed 50 rows containing non-finite values (stat_smooth).
+
+Warning: Removed 50 rows containing missing values (geom_point).
+```
+
+![plot of chunk years](figure/years-9.png)
+
+```r
+ggplot(enve_test, aes(x=years, y=extortions)) +
+                        geom_point() +
+                        geom_smooth(method="loess") +
+                        xlab("Years") +
+                        ylab("Extortions") +
+                        theme_bw()
+```
+
+```
+Warning: Removed 50 rows containing non-finite values (stat_smooth).
+
+Warning: Removed 50 rows containing missing values (geom_point).
+```
+
+![plot of chunk years](figure/years-10.png)
+
+```r
+ggplot(enve_test, aes(x=years, y=extortions)) +
+                        geom_point() +
                         geom_smooth(method="loess") +
                         xlab("Years (sqrt scale)") +
                         ylab("Extortions") +
@@ -729,19 +706,15 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 ```
 Warning: Removed 50 rows containing non-finite values (stat_smooth).
+
+Warning: Removed 50 rows containing missing values (geom_point).
 ```
 
-```
-Warning in trans$transform(out$range): NaNs produced
-```
-
-```
-Error in if (zero_range(range)) {: missing value where TRUE/FALSE needed
-```
+![plot of chunk years](figure/years-11.png)
 
 ```r
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_jitter() +
+                        geom_point() +
                         geom_smooth(method="loess") +
                         xlab("Years (log scale)") +
                         ylab("Extortions") +
@@ -751,13 +724,11 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 ```
 Warning: Removed 50 rows containing non-finite values (stat_smooth).
-```
 
-```
 Warning: Removed 50 rows containing missing values (geom_point).
 ```
 
-![plot of chunk years](figure/years-8.png)
+![plot of chunk years](figure/years-12.png)
 
 
 # Model
@@ -1396,7 +1367,7 @@ time
 
 ```
    user  system elapsed 
-  5.397   3.796   5.655 
+  6.075   4.009   6.191 
 ```
 
 ```r
@@ -1405,5 +1376,5 @@ print(paste("the script took", round(time[3]/60,2),
 ```
 
 ```
-[1] "the script took 0.09 minutes to run."
+[1] "the script took 0.1 minutes to run."
 ```
