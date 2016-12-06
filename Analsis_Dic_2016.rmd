@@ -145,7 +145,10 @@ length(enve_test$extortions[is.na(enve_test$extortions)])
 length(enve_test$bribes[is.na(enve_test$bribes)])
 
 ## enve_test$extortions[is.na(enve_test$extortions)] <- 0
+summary(enve_test$bribes2)
+
 enve_test$bribes2[is.na(enve_test$bribes2)] <- 0
+summary(enve_test$bribes)
 
 
 ```
@@ -312,7 +315,8 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 m <- glmmadmb(extortions ~ bribes + tasahom + yearsquant +
                 subsector + size + (1 | NOM_ABR), data=na.omit(enve_test),
                  family="nbinom", zeroInflation=FALSE,
-                 extra.args="-ndi 60000", admb.opts = admbControl(noinit = FALSE))
+                 extra.args="-ndi 60000",
+                 admb.opts = admbControl(shess=FALSE, noinit = FALSE))
 
 summary(m)
 
@@ -334,14 +338,22 @@ screenreg(list(m,m_lme4))
 
 Using missing bribes as zeroes
 
+
 ```{r models-2}
+
+colind <- which(names(enve_test)=="bribes")
+
+enve_test2 <- enve_test[,-colind]
+
+
 
 # Negative Binomial GLMM
 
 n <- glmmadmb(extortions ~ bribes2 + tasahom + yearsquant +
-                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test),
+                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test2),
                  family="nbinom", zeroInflation=FALSE,
-                 extra.args="-ndi 60000", admb.opts = admbControl(noinit = FALSE))
+                 extra.args="-ndi 60000",
+                 admb.opts = admbControl(shess=FALSE, noinit = FALSE))
 
 summary(n)
 
@@ -352,7 +364,7 @@ Using lme4 instead of glmmadmb
 ```{r model-lme4-2}
 
 n_lme4 <- glmer.nb(extortions ~ bribes2 + tasahom + yearsquant +
-                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test))
+                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test2))
 
 summary(n_lme4)
 
