@@ -148,14 +148,14 @@ length(enve_test$bribes[is.na(enve_test$bribes)])
 summary(enve_test$bribes2)
 
 enve_test$bribes2[is.na(enve_test$bribes2)] <- 0
-summary(enve_test$bribes)
+summary(enve_test$bribes2)
 
 
 ```
 
 # EDA
 
-## Extoriton EDA
+## Extortion EDA
 
 ```{r EDA-extortions}
 # Distribution of extortion victimisations
@@ -209,14 +209,14 @@ cor.ext_years
 
 # For raw years number
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth(method="lm") +
                         xlab("Years") +
                         ylab("Extortions") +
                         theme_bw()
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth(method="lm") +
                         xlab("Years (sqrt scale)") +
                         ylab("Extortions") +
@@ -225,7 +225,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth(method="lm") +
                         xlab("Years (log scale)") +
                         ylab("Extortions") +
@@ -233,14 +233,14 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         coord_trans(x="log1p")
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         xlab("Years") +
                         ylab("Extortions") +
                         theme_bw() +
                         geom_density_2d()
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         xlab("Years (sqrt scale)") +
                         ylab("Extortions") +
                         theme_bw() +
@@ -249,7 +249,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         xlab("Years (log scale)") +
                         ylab("Extortions") +
                         theme_bw() +
@@ -257,14 +257,14 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         geom_density_2d()
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth() +
                         xlab("Years") +
                         ylab("Extortions") +
                         theme_bw()
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth() +
                         xlab("Years (sqrt scale)") +
                         ylab("Extortions") +
@@ -273,7 +273,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth() +
                         xlab("Years (log scale)") +
                         ylab("Extortions") +
@@ -281,14 +281,14 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         coord_trans(x="log1p")
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth(method="loess") +
                         xlab("Years") +
                         ylab("Extortions") +
                         theme_bw()
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth(method="loess") +
                         xlab("Years (sqrt scale)") +
                         ylab("Extortions") +
@@ -297,7 +297,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
-                        geom_point() +
+                        geom_jitter() +
                         geom_smooth(method="loess") +
                         xlab("Years (log scale)") +
                         ylab("Extortions") +
