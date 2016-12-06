@@ -315,8 +315,9 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 m <- glmmadmb(extortions ~ bribes + tasahom + yearsquant +
                 subsector + size + (1 | NOM_ABR), data=na.omit(enve_test),
                  family="nbinom", zeroInflation=FALSE,
-                 extra.args="-ndi 60000",
-                 admb.opts = admbControl(shess=FALSE, noinit = FALSE))
+                 #extra.args="-ndi 60000",
+                 admb.opts = admbControl(shess=FALSE, noinit = FALSE),
+                 verbose=TRUE)
 
 summary(m)
 
@@ -354,8 +355,9 @@ summary(enve_test2)
 n <- glmmadmb(extortions ~ bribes2 + tasahom + yearsquant +
                 subsector + size + (1 | NOM_ABR), data=na.omit(enve_test2),
                  family="nbinom", zeroInflation=FALSE,
-                 extra.args="-ndi 60000",
-                 admb.opts = admbControl(shess=FALSE, noinit = FALSE))
+                 #extra.args="-ndi 60000",
+                 admb.opts = admbControl(shess=FALSE, noinit = FALSE),
+                 verbose=TRUE)
 
 summary(n)
 
