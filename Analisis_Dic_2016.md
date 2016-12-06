@@ -28,7 +28,7 @@ date()
 ```
 
 ```
-[1] "Tue Dec  6 22:06:41 2016"
+[1] "Tue Dec  6 22:15:22 2016"
 ```
 
 ```r
@@ -222,15 +222,22 @@ bribecols <- c("bribe1",
                "bribe3",
                "bribe4")
 
-bribe_col_test <- bribecols %in% names(enve_test)
+#bribe_col_test <- bribecols %in% names(enve_test)
 
-colindbribe <- which(bribe_col_test==TRUE)
+colindbribe <- which(names(enve_test)==bribecols)
+```
 
+```
+Warning in names(enve_test) == bribecols: longer object length is not a
+multiple of shorter object length
+```
+
+```r
 colindbribe
 ```
 
 ```
-[1] 1 2 3 4
+integer(0)
 ```
 
 ```r
@@ -290,7 +297,12 @@ length(enve_test$bribes[is.na(enve_test$bribes)])
 ```
 
 ```
-[1] 50
+Warning in is.na(enve_test$bribes): is.na() applied to non-(list or vector)
+of type 'NULL'
+```
+
+```
+[1] 0
 ```
 
 ```r
@@ -299,18 +311,30 @@ summary(enve_test$bribes2)
 ```
 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  1.000   1.000   2.000   2.486   3.000  16.000    2218 
+Length  Class   Mode 
+     0   NULL   NULL 
 ```
 
 ```r
 enve_test$bribes2[is.na(enve_test$bribes2)] <- 0
+```
+
+```
+Warning in is.na(enve_test$bribes2): is.na() applied to non-(list or
+vector) of type 'NULL'
+```
+
+```
+Error in `$<-.data.frame`(`*tmp*`, "bribes2", value = numeric(0)): replacement has 0 rows, data has 2500
+```
+
+```r
 summary(enve_test$bribes2)
 ```
 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- 0.0000  0.0000  0.0000  0.2804  0.0000 16.0000 
+Length  Class   Mode 
+     0   NULL   NULL 
 ```
 
 ```r
@@ -318,54 +342,46 @@ summary(enve_test)
 ```
 
 ```
-    CVE_ENT          bribes           bribes2        bribe1   bribe2  
- Min.   : 1.00   Min.   : 0.0000   Min.   : 0.0000   1: 282   1: 282  
- 1st Qu.: 9.00   1st Qu.: 0.0000   1st Qu.: 0.0000   2:2168   2:2168  
- Median :16.00   Median : 0.0000   Median : 0.0000   9:  50   9:  50  
- Mean   :16.56   Mean   : 0.2861   Mean   : 0.2804                    
- 3rd Qu.:24.00   3rd Qu.: 0.0000   3rd Qu.: 0.0000                    
- Max.   :32.00   Max.   :16.0000   Max.   :16.0000                    
-                 NA's   :50                                           
- bribe3   bribe4       size     sector     tempsub      
- 1: 282   1: 282   Large :589   C:809   Min.   :212410  
- 2:2168   2:2168   Medium:633   I:825   1st Qu.:361710  
- 9:  50   9:  50   Small :618   S:866   Median :511160  
-                   Micro :660           Mean   :511102  
-                                        3rd Qu.:658810  
-                                        Max.   :812910  
-                                                        
-         subsector   hotrestbar     years         yearsquant 
- Manufacturing:484   0:2133     Min.   : 0.00   [0,8]  :552  
- Health       :391   1: 367     1st Qu.:10.00   (8,16] :454  
- HotelsRestBar:367              Median :21.00   (16,25]:507  
- Construction :356              Mean   :20.94   (25,34]:525  
- Maintenance  :206              3rd Qu.:31.00   (34,43]:462  
- Transport    :135              Max.   :43.00                
- (Other)      :561                                           
-       X         denuncias_homs     poblacion           tasahom      
- Min.   : 1.00   Min.   :  39.0   Min.   :  698295   Min.   : 1.938  
- 1st Qu.: 9.00   1st Qu.: 151.0   1st Qu.: 1728429   1st Qu.: 7.611  
- Median :16.00   Median : 536.0   Median : 2890108   Median :11.806  
- Mean   :16.56   Mean   : 581.6   Mean   : 3811708   Mean   :15.974  
- 3rd Qu.:24.00   3rd Qu.: 755.5   3rd Qu.: 4941059   3rd Qu.:20.165  
- Max.   :32.00   Max.   :2087.0   Max.   :16364210   Max.   :59.225  
-                                                                     
-    loghoms             logpop         tasahom_cntr         logtasa       
- Min.   :-2.68705   Min.   :-1.6674   Min.   :-13.5451   Min.   :-2.0782  
- 1st Qu.:-1.33333   1st Qu.:-0.7611   1st Qu.: -7.8719   1st Qu.:-0.7101  
- Median :-0.06648   Median :-0.2470   Median : -3.6767   Median :-0.2711  
- Mean   :-0.47729   Mean   :-0.2396   Mean   :  0.4915   Mean   :-0.2377  
- 3rd Qu.: 0.27666   3rd Qu.: 0.2893   3rd Qu.:  4.6822   3rd Qu.: 0.2642  
- Max.   : 1.29287   Max.   : 1.4868   Max.   : 43.7420   Max.   : 1.3416  
+    CVE_ENT          size     sector     tempsub               subsector  
+ Min.   : 1.00   Large :589   C:809   Min.   :212410   Manufacturing:484  
+ 1st Qu.: 9.00   Medium:633   I:825   1st Qu.:361710   Health       :391  
+ Median :16.00   Small :618   S:866   Median :511160   HotelsRestBar:367  
+ Mean   :16.56   Micro :660           Mean   :511102   Construction :356  
+ 3rd Qu.:24.00                        3rd Qu.:658810   Maintenance  :206  
+ Max.   :32.00                        Max.   :812910   Transport    :135  
+                                                       (Other)      :561  
+ hotrestbar     years         yearsquant        X         denuncias_homs  
+ 0:2133     Min.   : 0.00   [0,8]  :552   Min.   : 1.00   Min.   :  39.0  
+ 1: 367     1st Qu.:10.00   (8,16] :454   1st Qu.: 9.00   1st Qu.: 151.0  
+            Median :21.00   (16,25]:507   Median :16.00   Median : 536.0  
+            Mean   :20.94   (25,34]:525   Mean   :16.56   Mean   : 581.6  
+            3rd Qu.:31.00   (34,43]:462   3rd Qu.:24.00   3rd Qu.: 755.5  
+            Max.   :43.00                 Max.   :32.00   Max.   :2087.0  
                                                                           
-             NOM_ENT        NOM_ABR    
- HIDALGO         : 100   HGO.   : 100  
- GUANAJUATO      :  95   GTO.   :  95  
- JALISCO         :  95   JAL.   :  95  
- NUEVO LEON      :  87   NL     :  87  
- DISTRITO FEDERAL:  85   DF     :  85  
- PUEBLA          :  84   PUE.   :  84  
- (Other)         :1954   (Other):1954  
+   poblacion           tasahom          loghoms             logpop       
+ Min.   :  698295   Min.   : 1.938   Min.   :-2.68705   Min.   :-1.6674  
+ 1st Qu.: 1728429   1st Qu.: 7.611   1st Qu.:-1.33333   1st Qu.:-0.7611  
+ Median : 2890108   Median :11.806   Median :-0.06648   Median :-0.2470  
+ Mean   : 3811708   Mean   :15.974   Mean   :-0.47729   Mean   :-0.2396  
+ 3rd Qu.: 4941059   3rd Qu.:20.165   3rd Qu.: 0.27666   3rd Qu.: 0.2893  
+ Max.   :16364210   Max.   :59.225   Max.   : 1.29287   Max.   : 1.4868  
+                                                                         
+  tasahom_cntr         logtasa                    NOM_ENT    
+ Min.   :-13.5451   Min.   :-2.0782   HIDALGO         : 100  
+ 1st Qu.: -7.8719   1st Qu.:-0.7101   GUANAJUATO      :  95  
+ Median : -3.6767   Median :-0.2711   JALISCO         :  95  
+ Mean   :  0.4915   Mean   :-0.2377   NUEVO LEON      :  87  
+ 3rd Qu.:  4.6822   3rd Qu.: 0.2642   DISTRITO FEDERAL:  85  
+ Max.   : 43.7420   Max.   : 1.3416   PUEBLA          :  84  
+                                      (Other)         :1954  
+    NOM_ABR    
+ HGO.   : 100  
+ GTO.   :  95  
+ JAL.   :  95  
+ NL     :  87  
+ DF     :  85  
+ PUE.   :  84  
+ (Other):1954  
 ```
 
 # EDA
@@ -1463,7 +1479,7 @@ time
 
 ```
    user  system elapsed 
-  0.345   0.052   2.841 
+  0.281   0.130   2.459 
 ```
 
 ```r
@@ -1472,5 +1488,5 @@ print(paste("the script took", round(time[3]/60,2),
 ```
 
 ```
-[1] "the script took 0.05 minutes to run."
+[1] "the script took 0.04 minutes to run."
 ```
