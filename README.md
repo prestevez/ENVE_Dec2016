@@ -39,6 +39,8 @@ install.packages("texreg")
 install.packages("lme4")
 install.packages("glmmADMB")
 install.packages("classInt")
+install.packages("coda")
+install.packages("R2admb")
 ```
 
 Para verificar si los paquetes se encuentran instalados puede correr lo siguientes comandos:
@@ -51,7 +53,10 @@ packages <- c("foreign",
               "texreg",
               "lme4",
               "glmmADMB",
-              "classInt")
+              "classInt",
+              "coda"
+              "R2admb"
+              )
 
 
 packages %in% rownames(installed.packages())
