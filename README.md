@@ -54,9 +54,8 @@ packages <- c("foreign",
               "lme4",
               "glmmADMB",
               "classInt",
-              "coda"
-              "R2admb"
-              )
+              "coda",
+              "R2admb")
 
 
 packages %in% rownames(installed.packages())

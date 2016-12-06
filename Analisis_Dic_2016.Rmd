@@ -98,10 +98,14 @@ enve_test$bribes[with(enve_test,
 
 summary(enve_test$bribes)
 
-colindbribe <- which(names(enve_test)=="bribe1" |
-                                       "bribe2" |
-                                       "bribe3" |
-                                       "bribe4")
+bribecols <- c("bribe1",
+               "bribe2",
+               "bribe3",
+               "bribe4",)
+
+bribe_col_test <- bribecols %in% names(enve_test)
+
+colindbribe <- which(bribe_col_test==TRUE)
 
 colindbribe
 
