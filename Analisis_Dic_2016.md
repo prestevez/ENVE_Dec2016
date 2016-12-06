@@ -28,7 +28,7 @@ date()
 ```
 
 ```
-[1] "Tue Dec  6 22:18:19 2016"
+[1] "Tue Dec  6 22:22:51 2016"
 ```
 
 ```r
@@ -1096,54 +1096,54 @@ summary(enve_test2)
 ```
 
 ```
-    CVE_ENT         bribes2        bribe1   bribe2   bribe3   bribe4  
- Min.   : 1.00   Min.   : 0.0000   1: 282   1: 282   1: 282   1: 282  
- 1st Qu.: 9.00   1st Qu.: 0.0000   2:2168   2:2168   2:2168   2:2168  
- Median :16.00   Median : 0.0000   9:  50   9:  50   9:  50   9:  50  
- Mean   :16.56   Mean   : 0.2804                                      
- 3rd Qu.:24.00   3rd Qu.: 0.0000                                      
- Max.   :32.00   Max.   :16.0000                                      
-                                                                      
-     size     sector     tempsub               subsector   hotrestbar
- Large :589   C:809   Min.   :212410   Manufacturing:484   0:2133    
- Medium:633   I:825   1st Qu.:361710   Health       :391   1: 367    
- Small :618   S:866   Median :511160   HotelsRestBar:367             
- Micro :660           Mean   :511102   Construction :356             
-                      3rd Qu.:658810   Maintenance  :206             
-                      Max.   :812910   Transport    :135             
-                                       (Other)      :561             
-     years         yearsquant        X         denuncias_homs  
- Min.   : 0.00   [0,8]  :552   Min.   : 1.00   Min.   :  39.0  
- 1st Qu.:10.00   (8,16] :454   1st Qu.: 9.00   1st Qu.: 151.0  
- Median :21.00   (16,25]:507   Median :16.00   Median : 536.0  
- Mean   :20.94   (25,34]:525   Mean   :16.56   Mean   : 581.6  
- 3rd Qu.:31.00   (34,43]:462   3rd Qu.:24.00   3rd Qu.: 755.5  
- Max.   :43.00                 Max.   :32.00   Max.   :2087.0  
-                                                               
-   poblacion           tasahom          loghoms             logpop       
- Min.   :  698295   Min.   : 1.938   Min.   :-2.68705   Min.   :-1.6674  
- 1st Qu.: 1728429   1st Qu.: 7.611   1st Qu.:-1.33333   1st Qu.:-0.7611  
- Median : 2890108   Median :11.806   Median :-0.06648   Median :-0.2470  
- Mean   : 3811708   Mean   :15.974   Mean   :-0.47729   Mean   :-0.2396  
- 3rd Qu.: 4941059   3rd Qu.:20.165   3rd Qu.: 0.27666   3rd Qu.: 0.2893  
- Max.   :16364210   Max.   :59.225   Max.   : 1.29287   Max.   : 1.4868  
+    CVE_ENT        extortions      extortion_victim rep_extortion_victim
+ Min.   : 1.00   Min.   : 0.0000   1: 297           0   :2262           
+ 1st Qu.: 9.00   1st Qu.: 0.0000   2:2153           1   : 188           
+ Median :16.00   Median : 0.0000   9:  50           NA's:  50           
+ Mean   :16.56   Mean   : 0.5808                                        
+ 3rd Qu.:24.00   3rd Qu.: 0.0000                                        
+ Max.   :32.00   Max.   :33.0000                                        
+                 NA's   :50                                             
+   CVE_UNICA         bribes2            size     sector     tempsub      
+ Min.   :    60   Min.   : 0.0000   Large :589   C:809   Min.   :212410  
+ 1st Qu.: 10220   1st Qu.: 0.0000   Medium:633   I:825   1st Qu.:361710  
+ Median : 19849   Median : 0.0000   Small :618   S:866   Median :511160  
+ Mean   : 32087   Mean   : 0.2804   Micro :660           Mean   :511102  
+ 3rd Qu.: 53126   3rd Qu.: 0.0000                        3rd Qu.:658810  
+ Max.   :100000   Max.   :16.0000                        Max.   :812910  
                                                                          
-  tasahom_cntr         logtasa                    NOM_ENT    
- Min.   :-13.5451   Min.   :-2.0782   HIDALGO         : 100  
- 1st Qu.: -7.8719   1st Qu.:-0.7101   GUANAJUATO      :  95  
- Median : -3.6767   Median :-0.2711   JALISCO         :  95  
- Mean   :  0.4915   Mean   :-0.2377   NUEVO LEON      :  87  
- 3rd Qu.:  4.6822   3rd Qu.: 0.2642   DISTRITO FEDERAL:  85  
- Max.   : 43.7420   Max.   : 1.3416   PUEBLA          :  84  
-                                      (Other)         :1954  
-    NOM_ABR    
- HGO.   : 100  
- GTO.   :  95  
- JAL.   :  95  
- NL     :  87  
- DF     :  85  
- PUE.   :  84  
- (Other):1954  
+         subsector   hotrestbar     years         yearsquant 
+ Manufacturing:484   0:2133     Min.   : 0.00   [0,8]  :552  
+ Health       :391   1: 367     1st Qu.:10.00   (8,16] :454  
+ HotelsRestBar:367              Median :21.00   (16,25]:507  
+ Construction :356              Mean   :20.94   (25,34]:525  
+ Maintenance  :206              3rd Qu.:31.00   (34,43]:462  
+ Transport    :135              Max.   :43.00                
+ (Other)      :561                                           
+       X         denuncias_homs     poblacion           tasahom      
+ Min.   : 1.00   Min.   :  39.0   Min.   :  698295   Min.   : 1.938  
+ 1st Qu.: 9.00   1st Qu.: 151.0   1st Qu.: 1728429   1st Qu.: 7.611  
+ Median :16.00   Median : 536.0   Median : 2890108   Median :11.806  
+ Mean   :16.56   Mean   : 581.6   Mean   : 3811708   Mean   :15.974  
+ 3rd Qu.:24.00   3rd Qu.: 755.5   3rd Qu.: 4941059   3rd Qu.:20.165  
+ Max.   :32.00   Max.   :2087.0   Max.   :16364210   Max.   :59.225  
+                                                                     
+    loghoms             logpop         tasahom_cntr         logtasa       
+ Min.   :-2.68705   Min.   :-1.6674   Min.   :-13.5451   Min.   :-2.0782  
+ 1st Qu.:-1.33333   1st Qu.:-0.7611   1st Qu.: -7.8719   1st Qu.:-0.7101  
+ Median :-0.06648   Median :-0.2470   Median : -3.6767   Median :-0.2711  
+ Mean   :-0.47729   Mean   :-0.2396   Mean   :  0.4915   Mean   :-0.2377  
+ 3rd Qu.: 0.27666   3rd Qu.: 0.2893   3rd Qu.:  4.6822   3rd Qu.: 0.2642  
+ Max.   : 1.29287   Max.   : 1.4868   Max.   : 43.7420   Max.   : 1.3416  
+                                                                          
+             NOM_ENT        NOM_ABR    
+ HIDALGO         : 100   HGO.   : 100  
+ GUANAJUATO      :  95   GTO.   :  95  
+ JALISCO         :  95   JAL.   :  95  
+ NUEVO LEON      :  87   NL     :  87  
+ DISTRITO FEDERAL:  85   DF     :  85  
+ PUEBLA          :  84   PUE.   :  84  
+ (Other)         :1954   (Other):1954  
 ```
 
 ```r
@@ -1157,7 +1157,16 @@ n <- glmmadmb(extortions ~ bribes2 + tasahom + yearsquant +
 ```
 
 ```
-Error in eval(expr, envir, enclos): object 'extortions' not found
+Warning: running command './glmmadmb -maxfn 500 -maxph 5 -ndi 60000' had
+status 1
+```
+
+```
+Parameters were estimated, but standard errors were not: the most likely problem is that the curvature at MLE was zero or negative
+```
+
+```
+Error in glmmadmb(extortions ~ bribes2 + tasahom + yearsquant + subsector + : The function maximizer failed (couldn't find parameter file) Troubleshooting steps include (1) run with 'save.dir' set and inspect output files; (2) change run parameters: see '?admbControl';(3) re-run with debug=TRUE for more information on failure mode
 ```
 
 ```r
@@ -1177,49 +1186,6 @@ n_lme4 <- glmer.nb(extortions ~ bribes2 + tasahom + yearsquant +
 ```
 
 ```
-Warning in (function (fn, par, lower = rep.int(-Inf, n), upper =
-rep.int(Inf, : failure to converge in 10000 evaluations
-```
-
-```
-Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
-$checkConv, : Model failed to converge with max|grad| = 0.00917909 (tol =
-0.001, component 1)
-```
-
-```
-Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv, : Model is nearly unidentifiable: large eigenvalue ratio
- - Rescale variables?
-```
-
-```
-Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
-$checkConv, : unable to evaluate scaled gradient
-```
-
-```
-Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
-$checkConv, : Hessian is numerically singular: parameters are not uniquely
-determined
-```
-
-```
-Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
-$checkConv, : unable to evaluate scaled gradient
-```
-
-```
-Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
-$checkConv, : Hessian is numerically singular: parameters are not uniquely
-determined
-```
-
-```
-Warning in (function (fn, par, lower = rep.int(-Inf, n), upper =
-rep.int(Inf, : failure to converge in 10000 evaluations
-```
-
-```
 Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
 $checkConv, : unable to evaluate scaled gradient
 ```
@@ -1231,8 +1197,14 @@ eigenvalues
 ```
 
 ```
-Warning in (function (fn, par, lower = rep.int(-Inf, n), upper =
-rep.int(Inf, : failure to converge in 10000 evaluations
+Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
+$checkConv, : unable to evaluate scaled gradient
+```
+
+```
+Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
+$checkConv, : Hessian is numerically singular: parameters are not uniquely
+determined
 ```
 
 ```
@@ -1253,6 +1225,22 @@ rep.int(Inf, : failure to converge in 10000 evaluations
 
 ```
 Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
+$checkConv, : Model failed to converge with max|grad| = 0.283184 (tol =
+0.001, component 1)
+```
+
+```
+Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv, : Model is nearly unidentifiable: large eigenvalue ratio
+ - Rescale variables?
+```
+
+```
+Warning in (function (fn, par, lower = rep.int(-Inf, n), upper =
+rep.int(Inf, : failure to converge in 10000 evaluations
+```
+
+```
+Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
 $checkConv, : unable to evaluate scaled gradient
 ```
 
@@ -1263,11 +1251,6 @@ determined
 ```
 
 ```
-Warning in (function (fn, par, lower = rep.int(-Inf, n), upper =
-rep.int(Inf, : failure to converge in 10000 evaluations
-```
-
-```
 Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
 $checkConv, : unable to evaluate scaled gradient
 ```
@@ -1279,8 +1262,14 @@ determined
 ```
 
 ```
-Warning in (function (fn, par, lower = rep.int(-Inf, n), upper =
-rep.int(Inf, : failure to converge in 10000 evaluations
+Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
+$checkConv, : unable to evaluate scaled gradient
+```
+
+```
+Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control
+$checkConv, : Hessian is numerically singular: parameters are not uniquely
+determined
 ```
 
 ```
@@ -1366,52 +1355,52 @@ not positive definite or contains NA values: falling back to var-cov estimated f
 ```
 Generalized linear mixed model fit by maximum likelihood (Laplace
   Approximation) [glmerMod]
- Family: Negative Binomial(0.0552)  ( log )
+ Family: Negative Binomial(0.0548)  ( log )
 Formula: extortions ~ bribes2 + tasahom + yearsquant + subsector + size +  
     (1 | NOM_ABR)
    Data: na.omit(enve_test2)
 
      AIC      BIC   logLik deviance df.resid 
-  3193.9   3361.7  -1568.0   3135.9     2372 
+  3227.5   3395.8  -1584.7   3169.5     2421 
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--0.2330 -0.2258 -0.2226 -0.2177 14.3363 
+-0.2321 -0.2249 -0.2217 -0.2169 14.5451 
 
 Random effects:
  Groups  Name        Variance  Std.Dev. 
- NOM_ABR (Intercept) 3.519e-12 1.876e-06
-Number of obs: 2401, groups:  NOM_ABR, 32
+ NOM_ABR (Intercept) 2.327e-11 4.824e-06
+Number of obs: 2450, groups:  NOM_ABR, 32
 
 Fixed effects:
                           Estimate Std. Error z value Pr(>|z|)  
-(Intercept)             -2.459e-02  5.773e-01  -0.043   0.9660  
-bribes2                  2.319e-02  8.316e-02   0.279   0.7804  
-tasahom                  6.758e-03  7.375e-03   0.916   0.3595  
-yearsquant(8,16]         1.266e-01  2.914e-01   0.434   0.6639  
-yearsquant(16,25]       -1.919e-01  2.865e-01  -0.670   0.5029  
-yearsquant(25,34]        3.052e-01  2.802e-01   1.089   0.2761  
-yearsquant(34,43]        8.675e-02  2.923e-01   0.297   0.7666  
-subsectorMining         -1.417e+00  1.061e+00  -1.335   0.1818  
-subsectorUtilities      -8.641e-02  8.947e-01  -0.097   0.9231  
-subsectorConstruction   -8.742e-02  5.598e-01  -0.156   0.8759  
-subsectorManufacturing  -4.197e-01  5.462e-01  -0.768   0.4423  
-subsectorWholesale      -7.330e-01  6.686e-01  -1.096   0.2730  
-subsectorTransport      -7.216e-01  6.472e-01  -1.115   0.2649  
-subsectorMedia           1.481e-01  8.396e-01   0.176   0.8600  
-subsectorFinance        -1.312e-01  8.942e-01  -0.147   0.8834  
-subsectorReal estate    -1.260e+00  9.500e-01  -1.326   0.1848  
-subsectorProf. services  1.008e+00  8.803e-01   1.146   0.2520  
-subsectorCorporate      -4.884e-01  8.188e-01  -0.597   0.5508  
-subsectorMaintenance    -7.612e-01  6.008e-01  -1.267   0.2052  
-subsectorEducation      -1.948e-03  8.911e-01  -0.002   0.9983  
-subsectorHealth         -6.329e-01  5.577e-01  -1.135   0.2564  
-subsectorLeisure         2.343e-01  8.736e-01   0.268   0.7885  
-subsectorHotelsRestBar  -5.332e-01  5.600e-01  -0.952   0.3410  
-subsectorOther          -3.244e+01  4.219e+06   0.000   1.0000  
-sizeMedium              -2.478e-01  2.613e-01  -0.948   0.3430  
-sizeSmall               -4.107e-01  2.647e-01  -1.552   0.1208  
-sizeMicro               -6.648e-01  2.607e-01  -2.550   0.0108 *
+(Intercept)             -5.611e-02  5.714e-01  -0.098   0.9218  
+bribes2                  2.747e-02  8.333e-02   0.330   0.7416  
+tasahom                  6.518e-03  7.317e-03   0.891   0.3730  
+yearsquant(8,16]         1.347e-01  2.902e-01   0.464   0.6426  
+yearsquant(16,25]       -1.979e-01  2.846e-01  -0.695   0.4868  
+yearsquant(25,34]        3.028e-01  2.783e-01   1.088   0.2765  
+yearsquant(34,43]        8.180e-02  2.902e-01   0.282   0.7780  
+subsectorMining         -1.452e+00  1.036e+00  -1.402   0.1610  
+subsectorUtilities      -7.728e-02  8.852e-01  -0.087   0.9304  
+subsectorConstruction   -7.118e-02  5.524e-01  -0.129   0.8975  
+subsectorManufacturing  -3.946e-01  5.392e-01  -0.732   0.4642  
+subsectorWholesale      -7.159e-01  6.617e-01  -1.082   0.2792  
+subsectorTransport      -6.905e-01  6.414e-01  -1.077   0.2817  
+subsectorMedia           1.347e-01  8.262e-01   0.163   0.8705  
+subsectorFinance        -9.511e-02  8.922e-01  -0.107   0.9151  
+subsectorReal estate    -1.305e+00  9.242e-01  -1.412   0.1580  
+subsectorProf. services  1.019e+00  8.703e-01   1.171   0.2417  
+subsectorCorporate      -4.583e-01  8.161e-01  -0.562   0.5744  
+subsectorMaintenance    -7.439e-01  5.940e-01  -1.252   0.2105  
+subsectorEducation       1.601e-03  8.816e-01   0.002   0.9986  
+subsectorHealth         -6.060e-01  5.502e-01  -1.101   0.2707  
+subsectorLeisure         2.433e-01  8.642e-01   0.282   0.7783  
+subsectorHotelsRestBar  -5.074e-01  5.533e-01  -0.917   0.3590  
+subsectorOther          -2.894e+01  7.011e+05   0.000   1.0000  
+sizeMedium              -2.519e-01  2.596e-01  -0.970   0.3320  
+sizeSmall               -4.112e-01  2.628e-01  -1.564   0.1177  
+sizeMicro               -6.624e-01  2.595e-01  -2.552   0.0107 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -1458,7 +1447,7 @@ time
 
 ```
    user  system elapsed 
-  0.273   0.056   2.288 
+704.653  15.022 764.859 
 ```
 
 ```r
@@ -1467,5 +1456,5 @@ print(paste("the script took", round(time[3]/60,2),
 ```
 
 ```
-[1] "the script took 0.04 minutes to run."
+[1] "the script took 12.75 minutes to run."
 ```
