@@ -101,7 +101,7 @@ summary(enve_test$bribes)
 bribecols <- c("bribe1",
                "bribe2",
                "bribe3",
-               "bribe4",)
+               "bribe4")
 
 bribe_col_test <- bribecols %in% names(enve_test)
 
