@@ -134,7 +134,7 @@ $(document).ready(function () {
 <p>We first check details of the session and system, and for reproducibility, we set the random seed.</p>
 <pre class="r"><code>starttime &lt;- proc.time()
 date()</code></pre>
-<pre><code>[1] &quot;Tue Dec  6 21:34:39 2016&quot;</code></pre>
+<pre><code>[1] &quot;Tue Dec  6 21:43:06 2016&quot;</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 3.3.0 (2016-05-03)
 Platform: x86_64-pc-linux-gnu (64-bit)
@@ -253,17 +253,17 @@ summary(enve_test$bribes)</code></pre>
 <pre class="r"><code>bribecols &lt;- c(&quot;bribe1&quot;,
                &quot;bribe2&quot;,
                &quot;bribe3&quot;,
-               &quot;bribe4&quot;,)</code></pre>
-<pre><code>Error in c(&quot;bribe1&quot;, &quot;bribe2&quot;, &quot;bribe3&quot;, &quot;bribe4&quot;, ): argument 5 is empty</code></pre>
-<pre class="r"><code>bribe_col_test &lt;- bribecols %in% names(enve_test)</code></pre>
-<pre><code>Error in match(x, table, nomatch = 0L): object 'bribecols' not found</code></pre>
-<pre class="r"><code>colindbribe &lt;- which(bribe_col_test==TRUE)</code></pre>
-<pre><code>Error in which(bribe_col_test == TRUE): object 'bribe_col_test' not found</code></pre>
-<pre class="r"><code>colindbribe</code></pre>
-<pre><code>Error in eval(expr, envir, enclos): object 'colindbribe' not found</code></pre>
-<pre class="r"><code>enve_test &lt;- enve_test[,-colindbribe]</code></pre>
-<pre><code>Error in `[.data.frame`(enve_test, , -colindbribe): object 'colindbribe' not found</code></pre>
-<pre class="r"><code>enve_test$CVE_ENT &lt;- as.integer(as.character(enve_all$CVE_ENT))
+               &quot;bribe4&quot;)
+
+bribe_col_test &lt;- bribecols %in% names(enve_test)
+
+colindbribe &lt;- which(bribe_col_test==TRUE)
+
+colindbribe</code></pre>
+<pre><code>[1] 1 2 3 4</code></pre>
+<pre class="r"><code>enve_test &lt;- enve_test[,-colindbribe]
+
+enve_test$CVE_ENT &lt;- as.integer(as.character(enve_all$CVE_ENT))
 
 enve_test$size &lt;- enve_all$ID_ESTRATO
 levels(enve_test$size) &lt;- c(&quot;Large&quot;, &quot;Medium&quot;, &quot;Small&quot;, &quot;Micro&quot;)
@@ -295,7 +295,9 @@ enve_test$yearsquant &lt;- cut(enve_test$years, intyears$brks, right=TRUE,
 enve_test &lt;- merge(enve_test, homicidios, by=&quot;CVE_ENT&quot;, all.x=TRUE)
 
 length(enve_test$extortions[is.na(enve_test$extortions)])</code></pre>
-<pre><code>[1] 50</code></pre>
+<pre><code>Warning in is.na(enve_test$extortions): is.na() applied to non-(list or
+vector) of type 'NULL'</code></pre>
+<pre><code>[1] 0</code></pre>
 <pre class="r"><code>length(enve_test$bribes[is.na(enve_test$bribes)])</code></pre>
 <pre><code>[1] 50</code></pre>
 <pre class="r"><code>## enve_test$extortions[is.na(enve_test$extortions)] &lt;- 0
@@ -1212,10 +1214,10 @@ unable to evaluate scaled gradient
 time &lt;- endtime - starttime
 time</code></pre>
 <pre><code>   user  system elapsed 
-  0.261   0.047   2.528 </code></pre>
+587.597   8.767 825.364 </code></pre>
 <pre class="r"><code>print(paste(&quot;the script took&quot;, round(time[3]/60,2),
               &quot;minutes to run.&quot;, sep=&quot; &quot;))</code></pre>
-<pre><code>[1] &quot;the script took 0.04 minutes to run.&quot;</code></pre>
+<pre><code>[1] &quot;the script took 13.76 minutes to run.&quot;</code></pre>
 </div>
 
 

@@ -149,6 +149,8 @@ enve_test$bribes2[is.na(enve_test$bribes2)] <- 0
 summary(enve_test$bribes2)
 
 
+summary(enve_test)
+
 ```
 
 # EDA
@@ -342,6 +344,8 @@ Using missing bribes as zeroes
 colind <- which(names(enve_test)=="bribes")
 
 enve_test2 <- enve_test[,-colind]
+
+summary(enve_test2)
 
 
 
