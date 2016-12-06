@@ -82,6 +82,8 @@ enve_test$CVE_UNICA <- as.integer(as.character(enve_all$ID_CONSECU))
 enve_test$bribes <- as.integer(as.character(enve_all$P33))
 summary(enve_test$bribes)
 
+enve_test$bribes2 <- as.integer(as.character(enve_all$P33))
+
 # 4 bribe cats
 enve_test$bribe1 <- enve_all$P29_1
 enve_test$bribe2 <- enve_all$P30_1
@@ -143,7 +145,7 @@ length(enve_test$extortions[is.na(enve_test$extortions)])
 length(enve_test$bribes[is.na(enve_test$bribes)])
 
 ## enve_test$extortions[is.na(enve_test$extortions)] <- 0
-## enve_test$bribes[is.na(enve_test$bribes)] <- 0
+enve_test$bribes2[is.na(enve_test$bribes2)] <- 0
 
 
 ```
@@ -308,7 +310,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
 # Negative Binomial GLMM
 
 m <- glmmadmb(extortions ~ bribes + tasahom + yearsquant +
-                subsector + size + (1 | CVE_ENT), data=enve_test,
+                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test),
                  family="nbinom", zeroInflation=FALSE,
                  extra.args="-ndi 60000", admb.opts = admbControl(noinit = FALSE))
 
@@ -321,12 +323,45 @@ Using lme4 instead of glmmadmb
 ```{r model-lme4}
 
 m_lme4 <- glmer.nb(extortions ~ bribes + tasahom + yearsquant +
-                subsector + size + (1 | CVE_ENT), data=enve_test)
+                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test))
 
 summary(m_lme4)
 
 screenreg(list(m,m_lme4))
 ```
+
+## Models 2
+
+Using missing bribes as zeroes
+
+```{r models-2}
+
+# Negative Binomial GLMM
+
+n <- glmmadmb(extortions ~ bribes2 + tasahom + yearsquant +
+                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test),
+                 family="nbinom", zeroInflation=FALSE,
+                 extra.args="-ndi 60000", admb.opts = admbControl(noinit = FALSE))
+
+summary(n)
+
+```
+
+Using lme4 instead of glmmadmb
+
+```{r model-lme4-2}
+
+n_lme4 <- glmer.nb(extortions ~ bribes2 + tasahom + yearsquant +
+                subsector + size + (1 | NOM_ABR), data=na.omit(enve_test))
+
+summary(n_lme4)
+
+screenreg(list(n,n_lme4))
+
+screenreg(list(m,m_lme4,n,n_lme4))
+```
+
+
 
 # Benchmark stats
 
