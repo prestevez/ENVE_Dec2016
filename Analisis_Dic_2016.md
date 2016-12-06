@@ -28,7 +28,7 @@ date()
 ```
 
 ```
-[1] "Tue Dec  6 21:18:48 2016"
+[1] "Tue Dec  6 21:34:39 2016"
 ```
 
 ```r
@@ -217,14 +217,30 @@ summary(enve_test$bribes)
 ```
 
 ```r
-colindbribe <- which(names(enve_test)=="bribe1" |
-                                       "bribe2" |
-                                       "bribe3" |
-                                       "bribe4")
+bribecols <- c("bribe1",
+               "bribe2",
+               "bribe3",
+               "bribe4",)
 ```
 
 ```
-Error in names(enve_test) == "bribe1" | "bribe2": operations are possible only for numeric, logical or complex types
+Error in c("bribe1", "bribe2", "bribe3", "bribe4", ): argument 5 is empty
+```
+
+```r
+bribe_col_test <- bribecols %in% names(enve_test)
+```
+
+```
+Error in match(x, table, nomatch = 0L): object 'bribecols' not found
+```
+
+```r
+colindbribe <- which(bribe_col_test==TRUE)
+```
+
+```
+Error in which(bribe_col_test == TRUE): object 'bribe_col_test' not found
 ```
 
 ```r
@@ -1367,7 +1383,7 @@ time
 
 ```
    user  system elapsed 
-  6.075   4.009   6.191 
+  0.261   0.047   2.528 
 ```
 
 ```r
@@ -1376,5 +1392,5 @@ print(paste("the script took", round(time[3]/60,2),
 ```
 
 ```
-[1] "the script took 0.1 minutes to run."
+[1] "the script took 0.04 minutes to run."
 ```
