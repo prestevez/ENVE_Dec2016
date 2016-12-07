@@ -21,7 +21,7 @@ Los paquetes requeridos por este proyecto son los siguientes:
 - **Cairo**: Permite guardar los gráficos como archivos png
 - **texreg**: Genera tablas complejas en formato LaTeX
 - **classInt**: Genera intervalos para quantiles.
-- **knitr**: Permite correr el script entero para e incorporar los resultados en un arhcivo de texto con formato markdown (extensión .md).
+- **knitr**: Permite correr el script entero para incorporar los resultados en un archivo de texto con formato markdown (extensión .md).
 - **lme4**: Paquete para correr modelos multinivel.
 - **coda**: Requerido por `glmmADMB`
 - **R2admb**: Requerido por `glmmADMB`
@@ -37,11 +37,33 @@ install.packages("Cairo")
 install.packages("knitr")
 install.packages("texreg")
 install.packages("lme4")
-install.packages("glmmADMB")
 install.packages("classInt")
 install.packages("coda")
 install.packages("R2admb")
 ```
+
+El paquete **glmmADMB** no se encuentra en los repositorios CRAN y debe de instalarse desde código fuente (para ello se requiere Rtools en un ambiente Windows; vea las instrucciones abajo). El paquete **glmmADMB** posiblemente requiera de la [**versión más nueva de R disponible en CRAN**](https://cran.r-project.org). De ser posible, asegúrese de contar con la versión más actualizada de R. De lo contrario, la instalación puede fallar.
+
+Para instalar **glmmADMB**, pruebe con el siguiente código:
+
+```
+install.packages("glmmADMB",
+    repos=c("http://glmmadmb.r-forge.r-project.org/repos",
+            getOption("repos")), type="source")
+```
+
+Es posible que deba instalar manualmente los paquetes **coda** y **R2admb**, pues son dependencias requeridas. Si la instalación de **glmmADMB** falla, intente instalar las dependencias primero
+
+### Instalación de Rtools
+**La siguientes instrucciones están pensadas para un sistema Windows**.
+
+Si la instalación reporta **tERROR: compilation failed for package "glmmADMB"**, o similar, será necesario instalar Rtools en la computadora.
+
+Rtools permite la instalación de paquetes en R desde el código fuente (*source*). Para instalar Rtools navegamos a la página de [Rtools](http://cran.r-project.org/bin/windows/Rtools/), y descargamos el archivo ejecutable acorde a nuestra versión de R. Corremos el instalador seleccionando la opción default: "Package authoring installation".
+
+Tras la instalación reinicie R y vuelva a correr el comando de instalación desde código fuente.
+
+## Verificación de instalación de paquetes
 
 Para verificar si los paquetes se encuentran instalados puede correr lo siguientes comandos:
 

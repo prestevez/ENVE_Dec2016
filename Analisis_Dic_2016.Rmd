@@ -70,13 +70,6 @@ enve_test$extortions[enve_test$extortion_victim == 2] <- 0
 summary(enve_test$extortions)
 table(enve_test$extortions)
 
-enve_test$rep_extortion_victim <- factor(enve_test$extortions)
-levels(enve_test$rep_extortion_victim) <- c(0, 0,
-                    rep(1, length(levels(enve_test$rep_extortion_victim)) - 2))
-
-summary(enve_test$rep_extortion_victim)
-
-
 enve_test$CVE_UNICA <- as.integer(as.character(enve_all$ID_CONSECU))
 
 enve_test$bribes <- as.integer(as.character(enve_all$P33))
@@ -161,7 +154,7 @@ enve_test3 <- enve_test2
 
 enve_test3$extortions[is.na(enve_test$extortions)] <- 0
 
-summary(enve_test2)
+summary(enve_test3)
 
 ```
 
@@ -249,7 +242,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         xlab("Years") +
                         ylab("Extortions") +
                         theme_bw() +
-                        geom_density_2d(h=1)
+                        geom_density_2d(h=5)
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
                         geom_point() +
@@ -257,7 +250,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         ylab("Extortions") +
                         theme_bw() +
                         coord_trans(x="sqrt") +
-                        geom_density_2d(h=2)
+                        geom_density_2d(h=5)
 
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
@@ -266,7 +259,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         ylab("Extortions") +
                         theme_bw() +
                         coord_trans(x="log1p") +
-                        geom_density_2d(h=0.5)
+                        geom_density_2d(h=5)
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
                         geom_point() +
