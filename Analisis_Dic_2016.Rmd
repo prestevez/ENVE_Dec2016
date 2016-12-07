@@ -142,14 +142,26 @@ enve_test <- merge(enve_test, homicidios, by="CVE_ENT", all.x=TRUE)
 length(enve_test$extortions[is.na(enve_test$extortions)])
 length(enve_test$bribes[is.na(enve_test$bribes)])
 
-## enve_test$extortions[is.na(enve_test$extortions)] <- 0
+summary(enve_test)
+
 summary(enve_test$bribes2)
 
 enve_test$bribes2[is.na(enve_test$bribes2)] <- 0
 summary(enve_test$bribes2)
 
 
-summary(enve_test)
+colind <- which(names(enve_test)=="bribes")
+
+enve_test2 <- enve_test[,-colind]
+
+summary(enve_test2)
+
+
+enve_test3 <- enve_test2
+
+enve_test3$extortions[is.na(enve_test$extortions)] <- 0
+
+summary(enve_test2)
 
 ```
 
@@ -237,7 +249,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         xlab("Years") +
                         ylab("Extortions") +
                         theme_bw() +
-                        geom_density_2d()
+                        geom_density_2d(h=1)
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
                         geom_point() +
@@ -245,7 +257,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         ylab("Extortions") +
                         theme_bw() +
                         coord_trans(x="sqrt") +
-                        geom_density_2d()
+                        geom_density_2d(h=2)
 
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
@@ -254,7 +266,7 @@ ggplot(enve_test, aes(x=years, y=extortions)) +
                         ylab("Extortions") +
                         theme_bw() +
                         coord_trans(x="log1p") +
-                        geom_density_2d()
+                        geom_density_2d(h=0.5)
 
 ggplot(enve_test, aes(x=years, y=extortions)) +
                         geom_point() +
@@ -342,14 +354,6 @@ Using missing bribes as zeroes
 
 ```{r models-2}
 
-colind <- which(names(enve_test)=="bribes")
-
-enve_test2 <- enve_test[,-colind]
-
-summary(enve_test2)
-
-
-
 # Negative Binomial GLMM
 
 n <- glmmadmb(extortions ~ bribes2 + tasahom + yearsquant +
@@ -373,8 +377,38 @@ n_lme4 <- glmer.nb(extortions ~ bribes2 + tasahom + yearsquant +
 summary(n_lme4)
 
 screenreg(list(n,n_lme4))
+```
 
-screenreg(list(m,m_lme4,n,n_lme4))
+## Original models
+
+Run the models with the original dataset to compare
+
+```{r original-model-glmmadmb}
+original <- glmmadmb(extortions ~ bribes2 + tasahom + yearsquant +
+                subsector + size + (1 | NOM_ABR), data=enve_test3,
+                 family="nbinom", zeroInflation=FALSE,
+                 #extra.args="-ndi 60000",
+                 admb.opts = admbControl(shess=FALSE, noinit = FALSE),
+                 verbose=TRUE)
+
+summary(original)
+
+```
+
+```{r original-model-lme4}
+original_lme4 <- glmer.nb(extortions ~ bribes2 + tasahom + yearsquant +
+                subsector + size + (1 | NOM_ABR), data=enve_test3)
+
+summary(original_lme4)
+
+screenreg(list(original,original_lme4))
+```
+
+# All models compared
+
+
+```{r all-models}
+screenreg(list(m,m_lme4,n,n_lme4,original,original_lme4))
 ```
 
 
